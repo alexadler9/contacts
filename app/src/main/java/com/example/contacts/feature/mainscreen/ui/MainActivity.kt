@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity() {
                 Toast.makeText(this, "Редактировать контакт ${it.id}", Toast.LENGTH_SHORT).show()
             },
             onItemDeleteClick = {
-                Toast.makeText(this, "Удалить контакт ${it.id}", Toast.LENGTH_SHORT).show()
+                viewModel.deleteContact(it)
             }
         )
     }

@@ -16,6 +16,13 @@ class ContactLocalSource(private val realm: Realm) {
         }
     }
 
+    fun delete(model: ContactEntity) {
+        realm.executeTransaction {
+            val result = realm.where(ContactEntity::class.java).equalTo("id", model.id).findAll()
+            result.deleteAllFromRealm()
+        }
+    }
+
     fun getAll(): List<ContactEntity> {
         return realm.where(ContactEntity::class.java).findAll()
     }

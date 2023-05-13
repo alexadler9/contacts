@@ -10,6 +10,10 @@ class ContactRepositoryImpl(private val contactLocalSource: ContactLocalSource) 
         contactLocalSource.add(model.toEntity())
     }
 
+    override fun delete(model: ContactModel) {
+        contactLocalSource.delete(model.toEntity())
+    }
+
     override fun getAll(): List<ContactModel> {
         return contactLocalSource.getAll().map { it.toDomain() }
     }
