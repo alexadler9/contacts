@@ -8,6 +8,14 @@ class ContactInteractor(private val contactRepository: ContactRepository) {
         contactRepository.add(model)
     }
 
+    fun update(model: ContactModel) {
+        contactRepository.update(model)
+    }
+
+    fun delete(model: ContactModel) {
+        contactRepository.delete(model)
+    }
+
     fun getAll(): List<ContactModel> {
         return contactRepository.getAll()
     }

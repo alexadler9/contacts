@@ -1,23 +1,21 @@
 package com.example.contacts.feature.mainscreen.ui
 
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.contacts.domain.ContactInteractor
 import com.example.contacts.domain.ContactModel
 
 class MainScreenViewModel(private val interactor: ContactInteractor) : ViewModel() {
 
-    val contacts: ContactLiveData
-        get() = getAllContacts() as ContactLiveData
+    val contacts: ContactLiveData = getAllContacts()
 
-    fun addContact(contact: ContactModel) {
-        interactor.add(contact)
+    fun deleteContact(contact: ContactModel) {
+        interactor.delete(contact)
+        contacts.value = interactor.getAll().toMutableList()
     }
 
-    fun getAllContacts(): MutableLiveData<List<ContactModel>> {
-        val contacts = interactor.getAll()
+    private fun getAllContacts(): ContactLiveData {
         return ContactLiveData().apply {
-            value = contacts.subList(0, contacts.size)
+            value = interactor.getAll().toMutableList()
         }
     }
 }

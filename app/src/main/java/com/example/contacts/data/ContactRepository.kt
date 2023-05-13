@@ -6,5 +6,9 @@ interface ContactRepository {
 
     fun add(model: ContactModel)
 
+    fun update(model: ContactModel)
+
+    fun delete(model: ContactModel)
+
     fun getAll(): List<ContactModel>
 }
