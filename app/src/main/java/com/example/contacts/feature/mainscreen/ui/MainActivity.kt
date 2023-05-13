@@ -2,10 +2,10 @@ package com.example.contacts.feature.mainscreen.ui
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.contacts.databinding.ActivityMainBinding
 import com.example.contacts.feature.addcontactscreen.ui.AddContactActivity
+import com.example.contacts.feature.editcontactscreen.ui.EditContactActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : AppCompatActivity() {
@@ -17,7 +17,9 @@ class MainActivity : AppCompatActivity() {
     private val contactsAdapter: ContactsAdapter by lazy {
         ContactsAdapter(
             onItemEditClick = {
-                Toast.makeText(this, "Редактировать контакт ${it.id}", Toast.LENGTH_SHORT).show()
+                val intent = Intent(this, EditContactActivity::class.java)
+                intent.putExtra(EditContactActivity.CONTACT_INTENT_KEY_ID, it)
+                startActivity(intent)
             },
             onItemDeleteClick = {
                 viewModel.deleteContact(it)

@@ -6,19 +6,25 @@ import java.util.*
 
 class ContactLocalSource(private val realm: Realm) {
 
-    fun add(model: ContactEntity) {
+    fun add(entity: ContactEntity) {
         realm.executeTransaction {
             it.createObject(ContactEntity::class.java, UUID.randomUUID().toString()).apply {
-                this.name = model.name
-                this.surname = model.surname
-                this.phone = model.phone
+                this.name = entity.name
+                this.surname = entity.surname
+                this.phone = entity.phone
             }
         }
     }
 
-    fun delete(model: ContactEntity) {
+    fun update(entity: ContactEntity) {
         realm.executeTransaction {
-            val result = realm.where(ContactEntity::class.java).equalTo("id", model.id).findAll()
+            it.insertOrUpdate(entity)
+        }
+    }
+
+    fun delete(entity: ContactEntity) {
+        realm.executeTransaction {
+            val result = realm.where(ContactEntity::class.java).equalTo("id", entity.id).findAll()
             result.deleteAllFromRealm()
         }
     }

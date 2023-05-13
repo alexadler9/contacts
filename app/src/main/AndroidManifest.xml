@@ -22,6 +22,9 @@
         <activity
             android:name=".feature.addcontactscreen.ui.AddContactActivity"
             android:exported="false" />
+        <activity
+            android:name=".feature.editcontactscreen.ui.EditContactActivity"
+            android:exported="false" />
     </application>
 
 </manifest>

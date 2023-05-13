@@ -8,10 +8,6 @@ class MainScreenViewModel(private val interactor: ContactInteractor) : ViewModel
 
     val contacts: ContactLiveData = getAllContacts()
 
-    fun addContact(contact: ContactModel) {
-        interactor.add(contact)
-    }
-
     fun deleteContact(contact: ContactModel) {
         interactor.delete(contact)
         contacts.value = interactor.getAll().toMutableList()
