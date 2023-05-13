@@ -25,6 +25,7 @@ class AddContactActivity : AppCompatActivity() {
             with(binding) {
                 contactInteractor.add(
                     ContactModel(
+                        id = "",
                         name = etName.text.toString(),
                         surname = etSurname.text.toString(),
                         phone = etPhone.text.toString()

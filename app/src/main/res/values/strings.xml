@@ -5,4 +5,6 @@
     <string name="phone_hint">Номер телефона</string>
     <string name="add_button">ДОБАВИТЬ КОНТАКТ</string>
     <string name="contact_name">%1$s %2$s</string>
+    <string name="menu_contact_item_edit">Редактировать</string>
+    <string name="menu_contact_item_delete">Удалить</string>
 </resources>
