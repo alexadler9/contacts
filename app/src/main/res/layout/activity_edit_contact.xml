@@ -12,7 +12,8 @@
         android:layout_marginTop="8dp"
         android:hint="@string/name_hint"
         android:importantForAutofill="no"
-        android:inputType="text" />
+        android:inputType="text|textCapWords"
+        android:nextFocusDown="@id/etSurname" />
 
     <EditText
         android:id="@+id/etSurname"
@@ -21,7 +22,8 @@
         android:layout_marginTop="8dp"
         android:hint="@string/surname_hint"
         android:importantForAutofill="no"
-        android:inputType="text" />
+        android:inputType="text|textCapWords"
+        android:nextFocusDown="@id/etPhone" />
 
     <EditText
         android:id="@+id/etPhone"
