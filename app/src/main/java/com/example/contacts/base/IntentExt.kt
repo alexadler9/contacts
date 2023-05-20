@@ -3,7 +3,6 @@ package com.example.contacts.base
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
-import android.text.Editable
 import java.io.Serializable
 
 inline fun <reified T : Serializable> Bundle.serializable(key: String): T? = when {
@@ -18,5 +17,3 @@ inline fun <reified T : Serializable> Intent.serializable(key: String): T? = whe
     )
     else -> @Suppress("DEPRECATION") getSerializableExtra(key) as? T
 }
-
-fun String.toEditable(): Editable = Editable.Factory.getInstance().newEditable(this)
