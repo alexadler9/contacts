@@ -3,6 +3,8 @@ package com.example.contacts.feature.addcontactscreen.ui
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.example.contacts.base.focusAndShowKeyboard
+import com.example.contacts.base.setOnFocusChangeListenerWithCursorAtEnd
 import com.example.contacts.databinding.ActivityAddContactBinding
 import com.example.contacts.domain.ContactInteractor
 import com.example.contacts.domain.ContactModel
@@ -21,8 +23,14 @@ class AddContactActivity : AppCompatActivity() {
         binding = ActivityAddContactBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.btnAdd.setOnClickListener {
-            with(binding) {
+        with(binding) {
+            etName.setOnFocusChangeListenerWithCursorAtEnd()
+            etSurname.setOnFocusChangeListenerWithCursorAtEnd()
+            etPhone.setOnFocusChangeListenerWithCursorAtEnd()
+
+            etName.focusAndShowKeyboard()
+
+            btnAdd.setOnClickListener {
                 contactInteractor.add(
                     ContactModel(
                         id = "",
@@ -31,9 +39,9 @@ class AddContactActivity : AppCompatActivity() {
                         phone = etPhone.text.toString()
                     )
                 )
+                startActivity(Intent(this@AddContactActivity, MainActivity::class.java))
+                finish()
             }
-            startActivity(Intent(this, MainActivity::class.java))
-            finish()
         }
     }
 }

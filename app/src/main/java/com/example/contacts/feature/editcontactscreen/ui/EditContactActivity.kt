@@ -3,7 +3,9 @@ package com.example.contacts.feature.editcontactscreen.ui
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.example.contacts.base.focusAndShowKeyboard
 import com.example.contacts.base.serializable
+import com.example.contacts.base.setOnFocusChangeListenerWithCursorAtEnd
 import com.example.contacts.base.toEditable
 import com.example.contacts.databinding.ActivityEditContactBinding
 import com.example.contacts.domain.ContactInteractor
@@ -38,6 +40,13 @@ class EditContactActivity : AppCompatActivity() {
                 etName.text = contact!!.name.toEditable()
                 etSurname.text = contact!!.surname.toEditable()
                 etPhone.text = contact!!.phone.toEditable()
+
+                etName.setOnFocusChangeListenerWithCursorAtEnd()
+                etSurname.setOnFocusChangeListenerWithCursorAtEnd()
+                etPhone.setOnFocusChangeListenerWithCursorAtEnd()
+
+                etName.focusAndShowKeyboard()
+
                 btnEdit.setOnClickListener {
                     contactInteractor.update(
                         ContactModel(

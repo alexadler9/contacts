@@ -21,10 +21,12 @@
         </activity>
         <activity
             android:name=".feature.addcontactscreen.ui.AddContactActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".feature.editcontactscreen.ui.EditContactActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
     </application>
 
 </manifest>
